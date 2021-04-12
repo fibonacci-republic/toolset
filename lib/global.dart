@@ -1,7 +1,15 @@
+import 'package:fbnc_toolset/component/layout/grid_layout.dart';
 import 'package:fbnc_toolset/model/router.dart';
+import 'package:fbnc_toolset/store/auth_store.dart';
 import 'package:fbnc_toolset/view/404/index.dart';
+import 'package:fbnc_toolset/view/test/index.dart';
 
 import 'store/router_store.dart';
+
+class GlobalData {
+  static final router = RoutesConfig.makeDefaultRouter();
+  static final authority = AuthStore();
+}
 
 class RoutesConfig {
   //默认导航 TODO 后面直接增加兜底 保证输出
@@ -13,14 +21,12 @@ class RoutesConfig {
       routes: [
         //包装孩子
         AppRoute("global_layout", path: "/home", routes: [
-          AppRoute("normal_trade_layout", path: "/home/trade", routes: [
-            AppRoute("change_password", path: "/home/trade/change_password"),
-          ]),
-          AppRoute("credit_trade", path: "/home/credit"),
-          AppRoute("hk", path: "/home/hk"),
+          AppRoute("1", path: "/home/1"),
+          AppRoute("2", path: "/home/2"),
+          AppRoute("3", path: "/home/3"),
+          AppRoute("4", path: "/home/4"),
         ]),
 
-        AppRoute("login", path: "/login"),
         // 兜底 这个可以去掉
         AppRoute("404", path: "/404"),
       ],
@@ -60,6 +66,19 @@ class RoutesConfig {
 // 组件独立
 class Components {
   static final Map<String, AppRouteProperties> _appRoutePropertiesBuilder = {
+    "global_layout": AppRouteProperties(
+        componentBuilder: (ctx, route, query) =>
+            GridRouterLayout(route: route, query: query)),
+
+    "1":
+        AppRouteProperties(componentBuilder: (ctx, route, query) => TestPage()),
+    "2":
+        AppRouteProperties(componentBuilder: (ctx, route, query) => TestPage()),
+    "3":
+        AppRouteProperties(componentBuilder: (ctx, route, query) => TestPage()),
+    "4":
+        AppRouteProperties(componentBuilder: (ctx, route, query) => TestPage()),
+
     /// 404
     "404": AppRouteProperties(
       componentBuilder: (ctx, route, query) => NotFoundPage(),

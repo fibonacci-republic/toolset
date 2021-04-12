@@ -3,8 +3,8 @@ import 'package:fbnc_toolset/model/router_internal.dart';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-//生成代码
-part 'route_store.g.dart';
+// 生成代码
+part 'router_store.g.dart';
 
 class RouterStore = _RouterStore with _$RouterStore;
 
