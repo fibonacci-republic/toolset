@@ -23,6 +23,7 @@ abstract class FbViewerState<T extends Viewer> extends ViewerState<T>
   @override
   void initState() {
     super.initState();
+    switchRoute(getPath(widget.route, widget.query));
     // 每个路由器都必须向上注册节点切换事件
     routerNotifier.value = widget.route.uri.path;
     parentState = context.findAncestorStateOfType<FbViewerState<T>>();

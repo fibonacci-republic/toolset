@@ -76,8 +76,8 @@ class Components {
         AppRouteProperties(componentBuilder: (ctx, route, query) => TestPage()),
     "3":
         AppRouteProperties(componentBuilder: (ctx, route, query) => TestPage()),
-    "4":
-        AppRouteProperties(componentBuilder: (ctx, route, query) => TestPage()),
+    "4": AppRouteProperties(
+        componentBuilder: (ctx, route, query) => NotFoundPage()),
 
     /// 404
     "404": AppRouteProperties(
